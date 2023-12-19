@@ -175,7 +175,7 @@ ax = sns.countplot(x = dados.loan_status, palette=['#1d4f86', '#83b1e3'])
 ax.bar_label(ax.containers[0], fontsize=10)
 plt.show()
 ```
-![img 1](img\graficos\grafico-barra-loan-status.png)
+![img 1](./img/graficos/grafico-barra-loan-status.png)
 
 Visualizando proporções dos dados loan_status.
 
@@ -186,7 +186,7 @@ plt.ylabel("")
 plt.legend(loc='upper right')
 plt.show()
 ```
-![img 2](img\graficos\grafico-pizza-loan-status.png)
+![img 2](./img/graficos/grafico-pizza-loan-status.png)
 </details>
 <details>
 <summary><b>Total de clientes por faixa etária.</b></summary>
@@ -206,7 +206,7 @@ ax.bar_label(ax.containers[0], fontsize=10)
 plt.title('Total de Clientes Por Faixa Etária')
 plt.show()
 ```
-![img 3](img\graficos\grafico-barra-faixa-etaria.png)
+![img 3](./img/graficos/grafico-barra-faixa-etaria.png)
 </details>
 <details>
 <summary><b>Total de clientes por faixa de renda.</b></summary>
@@ -226,7 +226,7 @@ ax.bar_label(ax.containers[0], fontsize=10)
 plt.title('Total de Cientes Por Faixa de Renda')
 plt.show()
 ```
-![img 4](img\graficos\grafico-barra-faixa-renda.png)
+![img 4](./img/graficos/grafico-barra-faixa-renda.png)
 </details>
 <details>
 <summary><b>Total de clientes por faixa de valor de empréstimo.</b></summary>
@@ -246,7 +246,7 @@ ax.bar_label(ax.containers[0], fontsize=10)
 plt.title('Total de Clientes Por Faixa de Emprestimo')
 plt.show()
 ```
-![img 5](img\graficos\grafico-barra-faixa-emprestimo.png)
+![img 5](./img/graficos/grafico-barra-faixa-emprestimo.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Faixa Etária.</b></summary>
@@ -274,7 +274,7 @@ ax.set_xticklabels([f'{left} - {right}' for left, right in zip(bins[:-1], bins[1
 plt.legend()
 plt.show()
 ```
-![img 6](img\graficos\grafico-barra-faixa-etaria-loan-staus.png)
+![img 6](./img/graficos/grafico-barra-faixa-etaria-loan-staus.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Faixa de Renda Anual.
@@ -303,7 +303,7 @@ ax.set_xticklabels([f'{primeiro} - {segundo}' for primeiro, segundo in zip(bins[
 plt.legend()
 plt.show()
 ```
-![img 7](img\graficos\grafico-barra-faixa-renda-loan-staus.png)
+![img 7](./img/graficos/grafico-barra-faixa-renda-loan-staus.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Faixa de Empréstimo.</b></summary>
@@ -331,7 +331,7 @@ ax.set_xticklabels([f'{primeiro} - {segundo}' for primeiro, segundo in zip(bins[
 plt.legend()
 plt.show()
 ```
-![img 8](img\graficos\grafico-barra-faixa-emprestimo-loan-staus.png)
+![img 8](./img/graficos/grafico-barra-faixa-emprestimo-loan-staus.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Tipo de Imóvel.</b></summary>
@@ -348,7 +348,7 @@ plt.title('Distribuição de Status do Empréstimo por Tipo de Imóvel')
 plt.legend()
 plt.show()
 ```
-![img 9](img\graficos\grafico-barra-residencia-loan-staus.png)
+![img 9](./img/graficos/grafico-barra-residencia-loan-staus.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Histórico de Inadimplência.</b></summary>
@@ -365,7 +365,7 @@ plt.title('Distribuição de Status do Empréstimo por Histórico de Inadimplên
 plt.legend()
 plt.show()
 ```
-![img 10](img\graficos\grafico-barra-inadimplencia-loan-staus.png)
+![img 10](./img/graficos/grafico-barra-inadimplencia-loan-staus.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Grau de Empréstimo.</b></summary>
@@ -382,7 +382,7 @@ plt.title('Distribuição de Status do Empréstimo por Grau de Empréstimo')
 plt.legend()
 plt.show()
 ```
-![img 11](img\graficos\grafico-barra-grau-emprestimo-loan-staus.png)
+![img 11](./img/graficos/grafico-barra-grau-emprestimo-loan-staus.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Finalidade.</b></summary>
@@ -400,7 +400,7 @@ plt.title('Distribuição de Status do Empréstimo por Finalidade')
 plt.legend()
 plt.show()
 ```
-![img 12](img\graficos\grafico-barra-faixa-finalidade-loan-staus.png)
+![img 12](./img/graficos/grafico-barra-faixa-finalidade-loan-staus.png)
 </details>
 <details>
 <summary><b>Distribuição de Status do Empréstimo por Histórico de Crédito.</b></summary>
@@ -418,7 +418,7 @@ plt.title('Distribuição de Status do Empréstimo por Histórico de Crédito')
 plt.legend()
 plt.show()
 ```
-![img 13](img\graficos\grafico-barra-tempo-credito-loan-staus.png)
+![img 13](./img/graficos/grafico-barra-tempo-credito-loan-staus.png)
 </details>
 
 #### 1.2. Tratamento de Outliers:
@@ -435,7 +435,7 @@ sns.boxplot(x=dados['person_age'], color='#327fd2')
 plt.title('Variável person_age sem outliers')
 plt.show()
 ```
-![img 14](img\graficos\boxplot-idade.png)
+![img 14](./img/graficos/boxplot-idade.png)
 </details>
 <details>
 <summary><b>Variável person_income.</b></summary>
@@ -450,7 +450,7 @@ sns.boxplot(x=dados['person_income'], color='#327fd2')
 plt.title('Variável person_income sem outliers')
 plt.show()
 ```
-![img 15](img\graficos\boxplot-renda.png)
+![img 15](./img/graficos/boxplot-renda.png)
 </details>
 <details>
 <summary><b>Variável person_emp_length.</b></summary>
@@ -465,7 +465,7 @@ sns.boxplot(x=dados['person_emp_length'], color='#327fd2')
 plt.title('Variável person_emp_length sem outliers')
 plt.show()
 ```
-![img 16](img\graficos\boxplot-tempo-emprego.png)
+![img 16](./img/graficos/boxplot-tempo-emprego.png)
 </details>
 
 ## 2. Pré-processamento dos Dados:
@@ -498,7 +498,7 @@ ax.bar_label(ax.containers[0], fontsize=10)
 plt.title('Dados Balanceados')
 plt.show()
 ```
-![img 17](img\graficos\dados-balanceados.png)
+![img 17](./img/graficos/dados-balanceados.png)
 </details>
 <details>
 <summary><b>2.2. Pré-processamento dos Dados Originais:</b></summary>
@@ -639,7 +639,7 @@ axs[3,1].set_title('Redes Neurais Normal')
 plt.tight_layout()
 plt.show()
 ```
-![igm distribuição](img\graficos\distribuicao.png)
+![igm distribuição](./img/graficos/distribuicao.png)
 - Avaliando métricas das avaliações cruzadas:
 ```
 # Avaliando as métricas dos modelos
@@ -682,7 +682,7 @@ resumo = pd.DataFrame(
 resumo = resumo.transpose()
 resumo.style.applymap(lambda x: 'background-color: #abcaec' if x >= 0.80 else '')
 ```
-![img 18](img\metricas\metricas-avaiacao-modelos.png)
+![img 18](./img/metricas/metricas-avaiacao-modelos.png)
 ```
 # Criando um gráfico para visualização
 fig, ax = plt.subplots(figsize=(15, 5))
@@ -710,7 +710,7 @@ ax.set_title('Desempenho dos Modelos')
 ax.legend()
 plt.show()
 ```
-![img 19](img\graficos\grafico-avaliacao-modelos-ml.png)
+![img 19](./img/graficos/grafico-avaliacao-modelos-ml.png)
 </details>
 <details>
 <summary><b>3.3. Testes de Hipóteses ANOVA e Tukey:</b></summary>
@@ -761,7 +761,7 @@ print(teste_estatistico)
 teste_estatistico.plot_simultaneous()
 plt.show()
 ```
-![img tukey](img\graficos\tukey.png)
+![img tukey](./img/graficos/tukey.png)
 </details>
 
 ## 4. Validação do Modelo:
@@ -842,7 +842,7 @@ cm = confusion_matrix(y_teste_balanceado, previsoes)
 # Grafico
 matriz_confusao(cm)
 ```
-![img 20](img\graficos\matriz-confusao.png)
+![img 20](./img/graficos/matriz-confusao.png)
 </details>
 <details>
 <summary><b>4.5. Classification Report:</b></summary>
@@ -1012,106 +1012,106 @@ Disponível a qualquer hora e em qualquer lugar com acesso à internet.
 
 - Informe o nome completo do cliente e em seguida o cpf (apenas números).
 
-![img app 01](img\aplicacao\nome-cpf.png)
+![img app 01](./img/aplicacao/nome-cpf.png)
 </details>
 <details>
 <summary><b>2. Informando Data de Nascimento:</b></summary>
 
 - Informe a data de nascimento digitando ou selecionando no calendário.
 
-![img app 1](img\aplicacao\campo-data.png)
+![img app 1](./img/aplicacao/campo-data.png)
 
-![img app 2](img\aplicacao\entrada-data.png)
+![img app 2](./img/aplicacao/entrada-data.png)
 </details>
 <details>
 <summary><b>3. Informando Renda Mensal:</b></summary>
 
 - Informar o valor da renda mensal digitando no campo indicado.
 
-![img app 3](img\aplicacao\renda-mensal.png)
+![img app 3](./img/aplicacao/renda-mensal.png)
 </details>
 <details>
 <summary><b>4. Informando Qual o Tipo de Residência:</b></summary>
 
 - Selecione qual o tipo de residência, conforme as opções disponíveis.
 
-![img app 5](img\aplicacao\opcao-residencia.png)
+![img app 5](./img/aplicacao/opcao-residencia.png)
 </details>
 <details>
 <summary><b>5. Informando o Tempo de Trabalho:</b></summary>
 
 - Use o deslizador para informar o total de anos de trabalho.
 
-![img app 6](img\aplicacao\deslizador-trabalho.png)
+![img app 6](./img/aplicacao/deslizador-trabalho.png)
 </details>
 <details>
 <summary><b>6. Informando Finalidade do Empréstimo:</b></summary>
 
 - Selecione qual o tipo de finalidade do emprestimo, conforme as opções disponíveis.
 
-![img app 8](img\aplicacao\finalidade-opcao.png)
+![img app 8](./img/aplicacao/finalidade-opcao.png)
 </details>
 <details>
 <summary><b>7. Informando o Valor do Empréstimo:</b></summary>
 
 - Informe o valor do emprestimo digitando no campo.
 
-![img emprestimo](img\aplicacao\valor-emprestimo.png)
+![img emprestimo](./img/aplicacao/valor-emprestimo.png)
 </details>
 <details>
 <summary><b>8. Informe a Taxa de Juros do Empréstimo:</b></summary>
 
 - Use o deslizador para informar a taxa de juros.
 
-![img app 9](img\aplicacao\deslizador-juros.png)
+![img app 9](./img/aplicacao/deslizador-juros.png)
 </details>
 <details>
 <summary><b>9. Informe a Quantidade de Parcelas:</b></summary>
 
 - Selecione a quantidade de parcelas, conforme as opções disponíveis.
 
-![img app 10](img\aplicacao\parcelas.png)
+![img app 10](./img/aplicacao/parcelas.png)
 </details>
 <details>
 <summary><b>10. Informe se Existe Histórico de Inadimplência:</b></summary>
 
 - Selecione uma das duas opções, SIM para os casos que existem histórico de inadimplência e Não para o contrario.
 
-![img app 11](img\aplicacao\opcao-hist-inad.png)
+![img app 11](./img/aplicacao/opcao-hist-inad.png)
 </details>
 <details>
 <summary><b>11. Informe o Tempo de Crédito:</b></summary>
 
 - Use o deslizador para informar a quantidade de anos de histórico de crédito.
 
-![img app 12](img\aplicacao\deslizador-temp-credito.png)
+![img app 12](./img/aplicacao/deslizador-temp-credito.png)
 </details>
 <details>
 <summary><b>12. Executando a consulta:</b></summary>
 
 - Clique no botão "ANALISAR CRÉDITO".
 
-![img app 13](img\aplicacao\botao.png)
+![img app 13](./img/aplicacao/botao.png)
 
 - Exibindo resultado caso seja aprovado.
 
-![img app 14](img\aplicacao\credito-liberado.png)
+![img app 14](./img/aplicacao/credito-liberado.png)
 
 - Será habilitado o botão para exportar a proposta de empréstimo.
 
-![img app 15](img\aplicacao\botao-baixar-fromulario.png)
+![img app 15](./img/aplicacao/botao-baixar-fromulario.png)
 
 - O arquivo que será baixado será como esse.
 
-![img app 16](img\aplicacao\ex-proposta.png)
+![img app 16](./img/aplicacao/ex-proposta.png)
 
 - Na hipótese de ser reprovado o emprestimo, retornará a mensagem.
 
-![app reprovado](img\aplicacao\reprovado.png)
+![app reprovado](./img/aplicacao/reprovado.png)
 
 - Na situação de haver informações invalidas ou campos vazios, retornará a mensagem:
 
-![app error](img\aplicacao\error.png)
+![app error](./img/aplicacao/error.png)
 </details>
 
 
