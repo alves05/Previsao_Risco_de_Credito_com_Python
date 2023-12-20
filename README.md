@@ -22,7 +22,7 @@ Dessa forma, ao utilizar a aplicação, os usuários receberão um feedback imed
 
 >Clique na imagem para abrir o app CreditInspector ML v1.0.
 
-![app](./img/logos/aplicacao.png)
+[![app](./img/logos/aplicacao.png)](https://previsaoriscodecreditocompython-3f2jtcmglfeytir2pbig4k.streamlit.app/)
 
 ## Sobre o Dataset:
 O conjunto de dados usado neste projeto foi o [Credit Risk Dataset](https://www.kaggle.com/datasets/laotse/credit-risk-dataset), ele contem dados que simulam uma agência de crédito.
@@ -114,7 +114,7 @@ def agrupa_dados(dados:pd.DataFrame,variavel:str,intervalo:list,agrupamento:str)
 ```
 </details>
 <details>
-<summary><b>Função validacao_cruzada()</b></summary>
+<summary><b>Função validacao_cruzada():</b></summary>
 
 - ENTRADAS:
     - classificador, `classifier`: recebe o algoritmo de classificação.
@@ -976,7 +976,7 @@ O aplicativo desenvolvido tem o nome de CreditInspector ML, trat-se de é um apl
 
 ### Link da Aplicação:
 
-- [Aplicação Web]()
+- [Aplicação Web](https://previsaoriscodecreditocompython-3f2jtcmglfeytir2pbig4k.streamlit.app/)
 
 ### Funcionalidades Principais:
 
