@@ -341,7 +341,8 @@ def main():
                         with open('./.relatorio/relatorio.pdf', 'rb') as f:
                             st.download_button('BAIXAR PROPOSTA', f, 'relatorio.pdf')
                         
-                       # os.remove('./.relatorio/relatorio.pdf')
+                        # removendo arquivo
+                        os.remove('./.relatorio/relatorio.pdf')
 
                     else:
                         st.warning('No momento não há linha de crédito disponível para o cliente.', icon='❗')
@@ -351,6 +352,7 @@ def main():
                 raise ValueError('Verifique se todos os dados foram informados.')
         except ValueError as e:
             st.error(e, icon="🚨")
+    
 
 if __name__ == "__main__":
     main()
