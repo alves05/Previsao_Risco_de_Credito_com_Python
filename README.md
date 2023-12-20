@@ -13,7 +13,7 @@ Dessa forma, ao utilizar a aplicação, os usuários receberão um feedback imed
 
 - [Jupyter Notebook (Análise e Criação do Modelo ML)](./Previsao_Risco_de_Credito.ipynb)
 - [Código Fonte da Aplicação Web](./app.py)
-- [Modelo de ML Criado](./modelos/random_forest_credit.sav)
+- [Modelos de ML Criados](./modelos/)
 - [Base de Dados](./dados/)
 - [Imagens](./img/)
 - [License](./LICENSE)
@@ -969,7 +969,7 @@ print(classification_report(y_teste, previsoes))
 >O deploy foi realizado na [Streamlit Community Cloud](https://docs.streamlit.io/streamlit-community-cloud), que é uma plataforma aberta e gratuita para a comunidade implementar, descobrir e partilhar aplicações e código Streamlit entre si.
 
 ### Sobre a Aplicação:
-O aplicativo desenvolvido tem o nome de CreditInspector ML, trat-se de é um aplicativo web projetado para simplificar o processo de aprovação de empréstimos por meio da aplicação de algoritmos de machine learning. Ele visa fornecer uma análise rápida e precisa das solicitações de empréstimo, automatizando a decisão de aprovação ou rejeição..
+O aplicativo desenvolvido tem o nome de CreditInspector ML, trat-se de um aplicativo web projetado para simplificar o processo de aprovação de empréstimos por meio do uso de machine learning. Ele visa fornecer uma análise rápida e precisa das solicitações de empréstimo, automatizando a decisão de aprovação ou rejeição.
 
 ### Workflow App CreditInspector ML
 <img src='./img/workflow/app.png' width=700>
@@ -984,7 +984,7 @@ O aplicativo desenvolvido tem o nome de CreditInspector ML, trat-se de é um apl
 O aplicativo tem uma interface intuitiva para que os usuários possam facilmente preencher as informações dos clientes que solicitão empréstimo.
 
 2. **Machine Learning**:
-O CreditInspector ML integra modelo de machine learning treinado para analisar e prever a probabilidade de inadimplência com base nos dados fornecidos.
+O CreditInspector ML integra modelos de machine learning treinados para analisar e prever a probabilidade de inadimplência e o grau de risco do empréstimo, com base nos dados fornecidos.
 
 3. **Análise de Risco**:
 O aplicativo avalia automaticamente o risco associado a cada solicitação de empréstimo, considerando fatores como histórico de crédito, renda, emprego, idade, e outros indicadores relevantes.
@@ -1105,11 +1105,11 @@ Disponível a qualquer hora e em qualquer lugar com acesso à internet.
 
 ![img app 16](./img/aplicacao/ex-proposta.png)
 
-- Na hipótese de ser reprovado o emprestimo, retornará a mensagem.
+- Na hipótese de ser reprovado o empréstimo, retornará a mensagem.
 
 ![app reprovado](./img/aplicacao/reprovado.png)
 
-- Na situação de haver informações invalidas ou campos vazios, retornará a mensagem:
+- Na situação de haver informações inválidas ou campos vazios, retornará a mensagem:
 
 ![app error](./img/aplicacao/error.png)
 </details>
