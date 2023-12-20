@@ -129,7 +129,7 @@ def gera_pdf(dados:pd.DataFrame, colunas:list, termo:str) -> None:
     pdf.ln(8)    
     pdf.multi_cell(w=0, h=5, txt=termo, align='L')
     
-    return pdf.output(f'./relatorio/relatorio.pdf', 'F')
+    return pdf.output(f'./.relatorio/relatorio.pdf', 'f')
 
 def main():
     st.set_page_config(page_title='Banco&Bank', page_icon='💲')
@@ -338,10 +338,10 @@ def main():
 
                         gera_pdf(relatorio, ['index', 0], termo)
 
-                        with open('./relatorio/relatorio.pdf', 'rb') as f:
+                        with open('./.relatorio/relatorio.pdf', 'rb') as f:
                             st.download_button('BAIXAR PROPOSTA', f, 'relatorio.pdf')
                         
-                        os.remove('./relatorio/relatorio.pdf')
+                       # os.remove('./.relatorio/relatorio.pdf')
 
                     else:
                         st.warning('No momento não há linha de crédito disponível para o cliente.', icon='❗')
