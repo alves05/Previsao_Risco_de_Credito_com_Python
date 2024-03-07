@@ -234,9 +234,10 @@ def main():
         'Data de Nascimento:',
         value=None,
         min_value=datetime(idade_ano(60), 12, 31),
-        max_value=datetime(idade_ano(20), 12, 31),
+        max_value=datetime(idade_ano(20), datetime.now().month, datetime.now().day),
         format='DD/MM/YYYY',
     )
+    st.caption('Idade mínima para solicitar empréstimo é de 20 anos.')
     if data_nascimento is not None:
         idade = calcula_idade(data_nascimento)
         st.write(str(idade), 'anos')
@@ -308,9 +309,19 @@ def main():
     # Total de parcelas
     quantidade_parcelas = st.selectbox(
         'Quantidade de Parcelas: ',
-        ['6x', '12x', '24x', '36x', '48x', '60x', '72x'],
+        ['1x', '2x', '3x', '4x', '5x', '6x', '12x', '24x', '36x', '48x', '60x', '72x'],
     )
-    if quantidade_parcelas == '6x':
+    if quantidade_parcelas == '1x':
+        parcelas = 1
+    elif quantidade_parcelas == '2x':
+        parcelas = 2
+    elif quantidade_parcelas == '3x':
+        parcelas = 3
+    elif quantidade_parcelas == '4x':
+        parcelas = 4
+    elif quantidade_parcelas == '5x':
+        parcelas = 5
+    elif quantidade_parcelas == '6x':
         parcelas = 6
     elif quantidade_parcelas == '12x':
         parcelas = 12
