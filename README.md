@@ -1,5 +1,7 @@
 # Previsão de Risco de Crédito com Python
 
+### Veja a análise completa desse projeto em [Previsão Risco de Crédito](https://sites.google.com/view/portflio-wiliams-alves/in%C3%ADcio/risco-de-cr%C3%A9dito?authuser=0).
+
 ## Objetivo:
 Este projeto tem como principal objetivo a criação de um modelo de machine learning eficiente, voltado para a previsão de casos de inadimplência entre os clientes que buscam empréstimos junto a uma instituição financeira.
 
