@@ -5,20 +5,10 @@ from datetime import datetime
 import pandas as pd
 import streamlit as st
 from fpdf import FPDF
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-
-
-def modelo_ml():
-    """Carrega o modelo de Machine Learning para classificação de clientes que paga ou não o empréstimo."""
-    modelo = pickle.load(open('./modelos/random_forest_credit.sav', 'rb'))
-    return modelo
-
-
-def modelo_grau_risco():
-    """Carrega o modelo de machine learning para classificar o grau de risco do emprestimo."""
-    modelo = pickle.load(open('./modelos/modelo_grau_risco.sav', 'rb'))
-    return modelo
 
 
 def base_dados() -> pd.DataFrame:
@@ -27,12 +17,38 @@ def base_dados() -> pd.DataFrame:
     dados = dados.drop('loan_status', axis=True)
     return dados
 
+def test_train_credit():
+    '''Divisão da base em teste e treino.'''
+    with open('./dados/credit_risk_balanceada.pkl', 'rb') as arquivo:
+        x_treino, x_teste, y_treino, y_teste = pickle.load(arquivo)
+    return x_treino, x_teste, y_treino, y_teste
+
+def modelo_ml():
+    """Carrega o modelo de Machine Learning para classificação de clientes que paga ou não o empréstimo."""
+    modelo = RandomForestClassifier(criterion='entropy', n_estimators=200,
+                                    min_samples_split=2, min_samples_leaf=1, random_state=1)
+    x_treino,_,y_treino,_ = test_train_credit()
+    modelo.fit(x_treino, y_treino)
+    return modelo
 
 def base_dados_grau_risco() -> pd.DataFrame:
     """Carrega a base de dados para previsão de grau de risco do empréstimo."""
     dados = pd.read_csv('./dados/credit_risk_balanceado_grau_risco.csv')
     dados = dados.drop(['loan_status', 'loan_grade'], axis=True)
     return dados
+
+def test_train_nivel_risco():
+    with open('./dados/credit_risk_balanceada_nivel_risco.pkl', 'rb') as arquivo:
+        x_treino, x_teste, y_treino, y_teste = pickle.load(arquivo)
+    return x_treino, x_teste, y_treino, y_teste
+
+def modelo_grau_risco():
+    """Carrega o modelo de machine learning para classificar o grau de risco do emprestimo."""
+    modelo = RandomForestClassifier(criterion='entropy', n_estimators=200,
+                                    min_samples_split=2, min_samples_leaf=1, random_state=1)
+    x_treino,_,y_treino,_ = test_train_nivel_risco()
+    modelo.fit(x_treino, y_treino)
+    return modelo
 
 
 def processamento_base(dados: pd.DataFrame) -> list[list[list]]:
