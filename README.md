@@ -24,7 +24,7 @@ Dessa forma, ao utilizar a aplicação, os usuários receberão um feedback imed
 
 >Clique na imagem para abrir o app CreditInspector ML v1.0.
 
-[![app](./img/logos/aplicacao.png)](https://previsaoriscodecreditocompython-3f2jtcmglfeytir2pbig4k.streamlit.app/)
+[![app](./img/logos/aplicacao.png)](https://creditinspector-ml.streamlit.app/)
 
 ## Sobre o Dataset:
 O conjunto de dados usado neste projeto foi o [Credit Risk Dataset](https://www.kaggle.com/datasets/laotse/credit-risk-dataset), ele contem dados que simulam uma agência de crédito.
