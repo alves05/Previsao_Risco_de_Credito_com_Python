@@ -24,8 +24,8 @@ def test_train_credit():
     return x_treino, x_teste, y_treino, y_teste
 
 
-def modelo_ml():
-    """Carrega o modelo de Machine Learning para classificação de clientes que paga ou não o empréstimo."""
+def modelo_risco():
+    """Modelo de Machine Learning para classificação de clientes."""
     modelo = RandomForestClassifier(
         criterion='entropy',
         n_estimators=200,
@@ -52,9 +52,8 @@ def test_train_nivel_risco():
         x_treino, x_teste, y_treino, y_teste = pickle.load(arquivo)
     return x_treino, x_teste, y_treino, y_teste
 
-
 def modelo_grau_risco():
-    """Carrega o modelo de machine learning para classificar o grau de risco do emprestimo."""
+    """Modelo de Machine Learning para classificação do Grau de risco."""
     modelo = RandomForestClassifier(
         criterion='entropy',
         n_estimators=200,
@@ -95,7 +94,7 @@ def processando_base_grau_risco(dados: pd.DataFrame) -> list[list[list]]:
     return dados_processados
 
 
-def previsao(
+def previsao_risco_credito(
     idade: int,
     renda: float,
     imovel: str,
@@ -126,7 +125,7 @@ def previsao(
     dados = base_dados()
     dados = pd.concat([dados, nova_linha], ignore_index=True)
 
-    modelo = modelo_ml()
+    modelo = modelo_risco()
     dados_previsao = processamento_base(dados)
     return modelo.predict(dados_previsao)[0]
 
@@ -252,9 +251,14 @@ def main():
         "<h2 style='text-align: center; font-family: Verdana'>CreditInspector ML</h2>",
         unsafe_allow_html=True,
     )
-    st.header('', divider='blue')
     st.caption('Versão 1.1')
+    st.header('', divider='blue')
 
+    st.markdown(
+        "<h5 style='text-align:center; font-family:Verdana'>Formulário de Solicitação de Empréstimo</h5>",
+        unsafe_allow_html=True
+    )
+    st.write('')
     coluna1, coluna2, coluna3 = st.columns(3)
 
     # Nome
@@ -277,10 +281,10 @@ def main():
 
     if data_nascimento is not None:
         idade = calcula_idade(data_nascimento)
-        st.write(str(idade), 'anos')
+        st.write('Idade do cliente: %s anos' % (str(idade)))
     else:
         idade = 0
-    coluna3.caption('Idade mínima para solicitar empréstimo é de 20 anos.')
+    coluna3.caption('Idade mínima de 20 anos.')
     # Renda
     renda_mensal = coluna1.number_input('Renda Mensal:', value=0.00)
     renda = float(renda_mensal * 12)
@@ -299,8 +303,8 @@ def main():
         imovel = 'OTHER'
 
     # Tempo de emprego
-    tempo_trabalho = st.slider('Tempo de Emprego (em anos):', 0, 30, 1)
-
+    tempo_trabalho = st.slider('Tempo de Trabalho (em anos):', 0, 30, 1)
+    
     col1, col2 = st.columns(2)
     # Finalidade do empréstimo
     tipo_intencao = col1.selectbox(
@@ -504,7 +508,7 @@ def main():
                 and valor_emprestimo is not 0
             ):
                 if 20 <= idade <= 60 and taxa_rendimento_automatica < 40:
-                    resultado = previsao(
+                    resultado = previsao_risco_credito(
                         idade,
                         renda,
                         imovel,
