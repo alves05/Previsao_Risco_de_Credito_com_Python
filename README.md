@@ -1,6 +1,6 @@
 # Previsão de Risco de Crédito com Python
 
-Web App versão 1.0
+Web App versão 1.1
 
 ### Veja a análise completa desse projeto em [Previsão Risco de Crédito](https://sites.google.com/view/portflio-wiliams-alves/in%C3%ADcio/risco-de-cr%C3%A9dito?authuser=0).
 
@@ -22,11 +22,16 @@ Dessa forma, ao utilizar a aplicação, os usuários receberão um feedback imed
 - [Imagens](./img/)
 - [License](./LICENSE)
 
+## Atualização do app:
+
+- Novo layout do formulário
+- Integração dos modelos diretamente na aplicação (atendo expecificações da clound)
+
 ## Aplicação Web:
 
->Clique na imagem para abrir o app CreditInspector ML v1.0.
+>Clique na imagem para abrir o app CreditInspector ML v1.1.
 
-[<img src='./img/logos/aplicacao.png' width=450>](https://creditinspector-ml.streamlit.app/)
+[<img src='./img/logos/aplicacaov1.1.jpg' width=450>](https://creditinspector-ml.streamlit.app/)
 
 ## Sobre o Dataset:
 O conjunto de dados usado neste projeto foi o [Credit Risk Dataset](https://www.kaggle.com/datasets/laotse/credit-risk-dataset), ele contem dados que simulam uma agência de crédito.

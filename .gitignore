@@ -1,4 +1,4 @@
-.gitignore
+.gitattributes
 .ipynb_checkpoints
 abrejupyter.bat
 .venv
