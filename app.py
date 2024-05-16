@@ -52,6 +52,7 @@ def test_train_nivel_risco():
         x_treino, x_teste, y_treino, y_teste = pickle.load(arquivo)
     return x_treino, x_teste, y_treino, y_teste
 
+
 def modelo_grau_risco():
     """Modelo de Machine Learning para classificação do Grau de risco."""
     modelo = RandomForestClassifier(
@@ -256,7 +257,7 @@ def main():
 
     st.markdown(
         "<h5 style='text-align:center; font-family:Verdana'>Formulário de Solicitação de Empréstimo</h5>",
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
     st.write('')
     coluna1, coluna2, coluna3 = st.columns(3)
@@ -304,7 +305,7 @@ def main():
 
     # Tempo de emprego
     tempo_trabalho = st.slider('Tempo de Trabalho (em anos):', 0, 30, 1)
-    
+
     col1, col2 = st.columns(2)
     # Finalidade do empréstimo
     tipo_intencao = col1.selectbox(
