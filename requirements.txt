@@ -21,7 +21,7 @@ mdurl==0.1.2
 numpy==1.26.2
 packaging==23.2
 pandas==2.1.4
-Pillow==10.2.0
+Pillow==10.3.0
 protobuf==4.25.1
 pyarrow==14.0.1
 pydeck==0.8.1b0
