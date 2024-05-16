@@ -1,2 +1,0 @@
-modelos/random_forest_credit.sav filter=lfs diff=lfs merge=lfs -text
-modelos/modelo_grau_risco.sav filter=lfs diff=lfs merge=lfs -text

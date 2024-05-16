@@ -6,19 +6,8 @@ import pandas as pd
 import streamlit as st
 from fpdf import FPDF
 from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-
-
-def modelo_ml():
-    """Carrega o modelo de Machine Learning para classificação de clientes que paga ou não o empréstimo."""
-    modelo = pickle.load(open('./modelos/random_forest_credit.sav', 'rb'))
-    return modelo
-
-
-def modelo_grau_risco():
-    """Carrega o modelo de machine learning para classificar o grau de risco do emprestimo."""
-    modelo = pickle.load(open('./modelos/modelo_grau_risco.sav', 'rb'))
-    return modelo
 
 
 def base_dados() -> pd.DataFrame:
@@ -28,11 +17,54 @@ def base_dados() -> pd.DataFrame:
     return dados
 
 
+def test_train_credit():
+    """Divisão da base em teste e treino."""
+    with open('./dados/credit_risk_balanceada.pkl', 'rb') as arquivo:
+        x_treino, x_teste, y_treino, y_teste = pickle.load(arquivo)
+    return x_treino, x_teste, y_treino, y_teste
+
+
+def modelo_ml():
+    """Carrega o modelo de Machine Learning para classificação de clientes que paga ou não o empréstimo."""
+    modelo = RandomForestClassifier(
+        criterion='entropy',
+        n_estimators=200,
+        min_samples_split=2,
+        min_samples_leaf=1,
+        random_state=1,
+    )
+    x_treino, _, y_treino, _ = test_train_credit()
+    modelo.fit(x_treino, y_treino)
+    return modelo
+
+
 def base_dados_grau_risco() -> pd.DataFrame:
     """Carrega a base de dados para previsão de grau de risco do empréstimo."""
     dados = pd.read_csv('./dados/credit_risk_balanceado_grau_risco.csv')
     dados = dados.drop(['loan_status', 'loan_grade'], axis=True)
     return dados
+
+
+def test_train_nivel_risco():
+    with open(
+        './dados/credit_risk_balanceada_nivel_risco.pkl', 'rb'
+    ) as arquivo:
+        x_treino, x_teste, y_treino, y_teste = pickle.load(arquivo)
+    return x_treino, x_teste, y_treino, y_teste
+
+
+def modelo_grau_risco():
+    """Carrega o modelo de machine learning para classificar o grau de risco do emprestimo."""
+    modelo = RandomForestClassifier(
+        criterion='entropy',
+        n_estimators=200,
+        min_samples_split=2,
+        min_samples_leaf=1,
+        random_state=1,
+    )
+    x_treino, _, y_treino, _ = test_train_nivel_risco()
+    modelo.fit(x_treino, y_treino)
+    return modelo
 
 
 def processamento_base(dados: pd.DataFrame) -> list[list[list]]:
@@ -221,40 +253,40 @@ def main():
         unsafe_allow_html=True,
     )
     st.header('', divider='blue')
-    st.caption('Versão 1.0')
+    st.caption('Versão 1.1')
+
+    coluna1, coluna2, coluna3 = st.columns(3)
 
     # Nome
-    nome = st.text_input('Informe o Nome Completo:', max_chars=50).upper()
+    nome = coluna1.text_input('Informe o Nome Completo:', max_chars=50).upper()
 
     # documento
-    cpf = st.text_input('Informe o CPF (apenas números):', max_chars=11)
+    cpf = coluna2.text_input('Informe o CPF (apenas números):', max_chars=11)
 
     # Idade
-    data_nascimento = st.date_input(
+
+    data_nascimento = coluna3.date_input(
         'Data de Nascimento:',
         value=None,
         min_value=datetime(idade_ano(60), 12, 31),
-        max_value=datetime(idade_ano(20), datetime.now().month, datetime.now().day),
+        max_value=datetime(
+            idade_ano(20), datetime.now().month, datetime.now().day
+        ),
         format='DD/MM/YYYY',
     )
-    st.caption('Idade mínima para solicitar empréstimo é de 20 anos.')
+
     if data_nascimento is not None:
         idade = calcula_idade(data_nascimento)
         st.write(str(idade), 'anos')
     else:
-        st.info('Insira a data de nascimento do cliente.', icon='❕')
         idade = 0
-
+    coluna3.caption('Idade mínima para solicitar empréstimo é de 20 anos.')
     # Renda
-    renda_mensal = st.number_input('Renda Mensal:', value=0.00)
+    renda_mensal = coluna1.number_input('Renda Mensal:', value=0.00)
     renda = float(renda_mensal * 12)
-    if renda == 0.00:
-        st.info('Informe o valor da renda mensal diferente de 0.00.', icon='❕')
-    else:
-        pass
 
     # Tipo de residência
-    tipo_imovel = st.selectbox(
+    tipo_imovel = coluna2.selectbox(
         'Tipo de Residência:', ['Própria', 'Financiada', 'Alugada', 'Outros']
     )
     if tipo_imovel == 'Própria':
@@ -269,8 +301,9 @@ def main():
     # Tempo de emprego
     tempo_trabalho = st.slider('Tempo de Emprego (em anos):', 0, 30, 1)
 
+    col1, col2 = st.columns(2)
     # Finalidade do empréstimo
-    tipo_intencao = st.selectbox(
+    tipo_intencao = col1.selectbox(
         'Finalidade do Empréstimo:',
         [
             'Educação',
@@ -295,11 +328,7 @@ def main():
         intencao = 'DEBTCONSOLIDATION'
 
     # Valor do empréstimo
-    valor_emprestimo = st.number_input('Valor do Empréstimo:', value=0.00)
-    if valor_emprestimo <= 0.00:
-        st.info('Informe o valor do empréstimo diferente de 0.00.', icon='❕')
-    else:
-        pass
+    valor_emprestimo = col2.number_input('Valor do Empréstimo:', value=0.00)
 
     # Taxa de juros
     taxa_emprestimo = st.slider(
@@ -309,7 +338,20 @@ def main():
     # Total de parcelas
     quantidade_parcelas = st.selectbox(
         'Quantidade de Parcelas: ',
-        ['1x', '2x', '3x', '4x', '5x', '6x', '12x', '24x', '36x', '48x', '60x', '72x'],
+        [
+            '1x',
+            '2x',
+            '3x',
+            '4x',
+            '5x',
+            '6x',
+            '12x',
+            '24x',
+            '36x',
+            '48x',
+            '60x',
+            '72x',
+        ],
     )
     if quantidade_parcelas == '1x':
         parcelas = 1
@@ -383,8 +425,9 @@ def main():
         nome = None
         cpf = None
 
+    c1, c2 = st.columns(2)
     # Histórico de inadimplência
-    tipo_inadimplencia = st.selectbox(
+    tipo_inadimplencia = c1.selectbox(
         'Histórico de Inadimplência:', ['SIM', 'NÃO']
     )
     if tipo_inadimplencia == 'SIM':
@@ -393,7 +436,7 @@ def main():
         historico_inadimplencia = 'N'
 
     # Histórico de crédito
-    historico_credito = st.slider(
+    historico_credito = c2.slider(
         'Histórico de Crédito (em anos):',
         2,
         30,
@@ -492,7 +535,7 @@ def main():
                         ficha = {
                             'Nome do Cliente': nome,
                             'CPF': cpf,
-                            'Idade': idade,
+                            'Idade': f'{idade} anos',
                             'Renda Mensal': renda_mensal,
                             'Tipo de Residência': tipo_imovel,
                             'Tempo de Emprego': tempo_trabalho,
