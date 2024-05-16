@@ -24,8 +24,8 @@ Dessa forma, ao utilizar a aplicação, os usuários receberão um feedback imed
 
 ## Atualização do app:
 
-- Novo layout do formulário
-- Integração dos modelos diretamente na aplicação (atendo expecificações da clound)
+- Novo layout do formulário;
+- Integração dos modelos diretamente na aplicação.
 
 ## Aplicação Web:
 
