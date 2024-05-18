@@ -246,7 +246,7 @@ def gera_pdf(dados: pd.DataFrame, colunas: list, termo: str) -> None:
 
 def main():
     st.set_page_config(page_title='Banco&Bank', page_icon='💲')
-    st.image('./img/logos/logo.png', use_column_width=False)
+    st.image('./img/logos/logo.png', use_column_width=True)
     st.header('', divider='blue')
     st.markdown(
         "<h2 style='text-align: center; font-family: Verdana'>CreditInspector ML</h2>",
