@@ -981,13 +981,6 @@ print(classification_report(y_teste, previsoes))
 ### Sobre a Aplicação:
 O aplicativo desenvolvido tem o nome de CreditInspector ML, trat-se de um aplicativo web projetado para simplificar o processo de aprovação de empréstimos por meio do uso de machine learning. Ele visa fornecer uma análise rápida e precisa das solicitações de empréstimo, automatizando a decisão de aprovação ou rejeição.
 
-### Workflow App CreditInspector ML
-<img src='./img/workflow/app.png' width=700>
-
-### Link da Aplicação:
-
-- [Aplicação Web](https://previsaoriscodecreditocompython-3f2jtcmglfeytir2pbig4k.streamlit.app/)
-
 ### Funcionalidades Principais:
 
 1. **Interface Amigável**:
